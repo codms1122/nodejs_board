@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지</title>
+    <link rel="stylesheet" href="../css/css.css">
+</head>
+<body>
+    <div class="menu-icon">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+	<div class="separator-menu"></div>
+    <div class="login-container">
+        <h2 class="login-title">마이페이지</h2>
+        
+        <form action="#" method="POST">
+			<div class="input-container">
+                <label for="nickname">이름 </label>
+                <input type="text" id="nickname" name="nickname" required>
+            </div>
+            <div class="input-container">
+                <label for="username">아이디 <span class="required">*</span></label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="input-container">
+                <label for="password">비밀번호 <span class="required">*</span></label>
+                <input type="password" id="password" name="password" required>
+            </div>
+			<span class="password-terms"><span class="highlight">최소 10자리 이상의 영문대문자, 영문소문자, 숫자, 특수문자</span>(!@#$%^&*())<span class="highlight">중 
+			<br> 2가지 이상을 조합하여 작성해주시기 바랍니다.</span></span>
+			<div class="input-container">
+                <label for="password">비밀번호 확인<span class="required">*</span></label>
+                <input type="password" id="password" name="password" required>
+            </div>
+			<div class="separator-button">
+			</div>
+			<button type="submit" class="save-button">저장</button>
+			
+        </form>
+    </div>
+</body>
+</html>

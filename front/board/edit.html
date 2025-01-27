@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>게시판</title>
+    <link rel="stylesheet" href="../css/css.css">
+</head>
+<body>
+    <div class="menu-icon">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <form action="#" method="POST">
+        <div class="board_wrap">
+            <!-- 게시판 제목 -->
+            <div class="board_title">
+                <strong>글 수정</strong>
+                <!-- <p>전체</p> -->
+            </div>
+            <div class="board_write_wrap">
+                <!-- 글쓰기 -->
+                <div class="board_write">
+                    <div class="title">
+                        <dl>
+                            <dd>
+                                <input type="text" placeholder="제목" value="글 제목입니다">
+                            </dd>
+                        </dl>
+                    </div>
+                    <div class="cont">
+                        <textarea placeholder="내용 입력">글을 작성해주세요</textarea>
+                    </div>
+                </div>
+                <!-- 첨부파일 등록 -->
+                <div class="file">
+                    <input type="file" name="SelectFile">
+                </div>
+                <!-- 버튼 -->
+                <div class="bt_wrap">
+                    <a href="view.html" class="on">수정</a>
+                    <a href="list.html">취소</a>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
+
