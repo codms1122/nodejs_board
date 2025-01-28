@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시판</title>
-    <link rel="stylesheet" href="../css/css.css">
+    <link rel="stylesheet" href="/css/css.css">
 </head>
 <body>
     <div class="menu-icon">
@@ -12,7 +12,7 @@
         <div class="bar"></div>
         <div class="bar"></div>
     </div>
-    <form action="#" method="POST">
+    <form action="/write" method="POST">
         <div class="board_wrap">
             <!-- 게시판 제목 -->
             <div class="board_title">
@@ -39,6 +39,7 @@
                 </div>
                 <!-- 버튼 -->
                 <div class="bt_wrap">
+		    <button type="submit">등록</button>
                     <a href="write.html" class="on">등록</a>
                     <a href="list.html">취소</a>
                 </div>
