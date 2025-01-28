@@ -1,2 +1,4 @@
 node_modules/
 server/db.js
+package-lock.json
+package.json
