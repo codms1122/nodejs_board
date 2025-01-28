@@ -2,36 +2,57 @@
 const express = require('express');
 const path = require('path');
 const router = express.Router();
-const multer = require('multer'); // 파일 업로드를 위한 라이브러리
+//const multer = require('multer'); // 파일 업로드를 위한 라이브러리
 const connection = require('./db'); // db.js에서 데이터베이스 연결 가져오기
 
-// 파일 저장 설정
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, path.join(__dirname, './files')); // 파일 저장 경로 설정
-    },
-    filename: (req, file, cb) => {
-        const timestamp = Date.now(); // 현재 날짜 및 시간 값
-        const o_filename = file.originalname;
-        const s_filename = `${timestamp}_${o_filename}`; // 새 파일명
-        cb(null, s_filename);
-    }
-});
 
-// multer 설정
-const upload = multer({ storage });
-
-
-
-
-// 게시글 작성 (GET /write)
+// 게시글 작성 (GET /list)
 router.get('/', (req, res) => {
-	res.sendFile(path.join(__dirname, '../front/board/write.html'));
-	console.log('[get] write success');
+	res.sendFile(path.join(__dirname, '../front/board/list.html'));
+	console.log('[get] list success');
 });
+
+
+// 특정 게시글 읽기 (GET /list/:id)
+router.get('/:id', (req, res) => {
+  const post_id = req.params.id;
+  const query = 'SELECT * FROM post WHERE postId = ?';
+  
+  connection.execute(query, [post_id], (err, results) => {
+    if (err) {
+      console.error('Error fetching data: ' + err.stack);
+      res.status(500).send('Database error');
+      return;
+    }
+    if (results.length === 0) {
+      return res.status(404).send('Post not found');
+    }
+    
+
+	//res.json(results[0]); // 첫 번째 결과만 반환
+	const post = results[0];
+	const user_id = "test"
+	//const user_id = req.session.user_id || null; // 로그인한 사용자의 user_id (세션에서 가져오기)
+	
+	// EJS 템플릿에 post와 user_id 전달
+	res.render('view', { post, user_id });
+	console.log(results[0]);
+
+  });
+});
+
+
+// 이 파일에서 router를 내보냄
+module.exports = router;
+
+
+
+
+
 
 
 // 게시글 작성 (POST /write)
+/*
 router.post('/', upload.single('file'), (req, res) => {
 	//const { title, content, file } = req.body;
 	const { title, content } = req.body;
@@ -64,7 +85,5 @@ router.post('/', upload.single('file'), (req, res) => {
 			   
   
 });
+*/
 
-
-// 이 파일에서 router를 내보냄
-module.exports = router;
